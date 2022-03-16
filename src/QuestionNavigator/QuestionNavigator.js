@@ -15,9 +15,11 @@ const questionNavigator = (props) => {
 
   for (let i = 1; i <= questionCount; ++i) {
     const qIdx = i - 1;
-    const qVisited = questionsVisited.indexOf(qIdx) != -1;
-    const qAnswered = selectedAnswers[qIdx] != null;
-    const qSelected = questionIndex == qIdx;
+    const qVisited = questionsVisited.indexOf(qIdx) !== -1;
+    const qAnswered =
+      selectedAnswers[qIdx] !== undefined && selectedAnswers[qIdx] !== null;
+
+    const qSelected = questionIndex === qIdx;
 
     let clsName = "app-question-navigator__button";
 
@@ -26,7 +28,8 @@ const questionNavigator = (props) => {
     }
 
     if (showAnswerMode && qAnswered) {
-      const isCorrect = selectedAnswers[qIdx] == questions[qIdx].correct_answer;
+      const isCorrect =
+        selectedAnswers[qIdx] === questions[qIdx].correct_answer;
       clsName += isCorrect
         ? " app-question-navigator__button--answered"
         : " app-question-navigator__button--incorrect";
@@ -39,7 +42,11 @@ const questionNavigator = (props) => {
     }
 
     questionButtons.push(
-      <div onClick={() => onChangeQuestion(qIdx)} className={clsName}>
+      <div
+        onClick={() => onChangeQuestion(qIdx)}
+        className={clsName}
+        key={qIdx}
+      >
         {i}
       </div>
     );
@@ -63,9 +70,11 @@ const questionNavigator = (props) => {
         case "hard":
           fm = 4;
           break;
+        default:
+          fm = 0;
       }
 
-      if (quest.correct_answer == selectedAnswers[i]) {
+      if (quest.correct_answer === selectedAnswers[i]) {
         scored += fm;
       }
       total += fm;

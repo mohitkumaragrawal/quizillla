@@ -18,13 +18,13 @@ const Question = (props) => {
   const difficulty = q.difficulty.toLowerCase();
 
   let tagClass = "app-question__tag";
-  if (difficulty == "easy") {
+  if (difficulty === "easy") {
     tagClass += " app-question__tag--easy";
   }
-  if (difficulty == "medium") {
+  if (difficulty === "medium") {
     tagClass += " app-question__tag--medium";
   }
-  if (difficulty == "hard") {
+  if (difficulty === "hard") {
     tagClass += " app-question__tag--hard";
   }
 
@@ -46,19 +46,22 @@ const Question = (props) => {
         {options.map((opt) => {
           let clsName = "app-question__option";
           if (showAnswerMode) {
-            if (opt == q.correct_answer) {
+            if (opt === q.correct_answer) {
               clsName += " app-question__option--correct";
-            } else if (selectedAnswer == opt) {
+            } else if (selectedAnswer === opt) {
               clsName += " app-question__option--incorrect";
             }
-          } else if (selectedAnswer == opt) {
+          } else if (selectedAnswer === opt) {
             clsName += " app-question__option--selected";
           }
 
           return (
-            <div className={clsName} onClick={() => handleOptionClick(opt)}>
-              {opt}
-            </div>
+            <div
+              className={clsName}
+              onClick={() => handleOptionClick(opt)}
+              dangerouslySetInnerHTML={{ __html: opt }}
+              key={opt}
+            ></div>
           );
         })}
       </div>

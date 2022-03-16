@@ -36,12 +36,12 @@ class App extends Component {
     axios
       .get("https://opentdb.com/api.php?amount=10&&type=multiple")
       .then((data) => {
-        if (data.status != 200) {
+        if (data.status !== 200) {
           return;
         }
 
         const { response_code, results } = data.data;
-        if (response_code != 0) return;
+        if (response_code !== 0) return;
 
         this.setState({
           questions: results,
@@ -52,7 +52,7 @@ class App extends Component {
 
   changeQuestion = (newQuestionIndex) => {
     let newQuestionVisited = null;
-    if (this.state.questionsVisited.indexOf(newQuestionIndex) != -1) {
+    if (this.state.questionsVisited.indexOf(newQuestionIndex) !== -1) {
       newQuestionVisited = [...this.state.questionsVisited];
     } else {
       newQuestionVisited = [...this.state.questionsVisited, newQuestionIndex];
@@ -75,7 +75,7 @@ class App extends Component {
   onOptionSelected = (newOption) => {
     let newSelectedAnswers = { ...this.state.selectedAnswers };
 
-    if (newSelectedAnswers[this.state.questionIndex] == newOption) {
+    if (newSelectedAnswers[this.state.questionIndex] === newOption) {
       newSelectedAnswers[this.state.questionIndex] = null;
     } else {
       newSelectedAnswers[this.state.questionIndex] = newOption;
