@@ -73,9 +73,20 @@
 .app-question__tag--easy {
   background-color: var(--color-easy);
 }
+.app-question__tag--easy::after {
+  content: " +1";
+}
+
 .app-question__tag--medium {
   background-color: var(--color-medium);
 }
+.app-question__tag--medium::after {
+  content: " +2";
+}
+
 .app-question__tag--hard {
   background-color: var(--color-hard);
+}
+.app-question__tag--hard::after {
+  content: " +4";
 }
