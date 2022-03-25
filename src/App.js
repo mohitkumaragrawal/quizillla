@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Question from "./Questions/Question";
 import QuestionNavigator from "./QuestionNavigator/QuestionNavigator";
+import LoadingSpinner from "./LoadingSpinner";
 import axios from "axios";
 
 import "./App.css";
@@ -116,7 +117,7 @@ class App extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>loading....</div>;
+      return <LoadingSpinner></LoadingSpinner>;
     }
     return (
       <div className="app-container">
