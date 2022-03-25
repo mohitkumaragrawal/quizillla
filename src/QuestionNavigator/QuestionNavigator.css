@@ -1,12 +1,28 @@
 .app-question-navigator {
   background-color: var(--theme-color-2);
   height: 100%;
-  width: 20%;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 2rem 2rem;
+  transition: all 0.3s ease-out;
+  z-index: 8;
+}
+
+@media (max-width: 750px) {
+  .app-question-navigator {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    display: flex;
+    transform: translateX(100%);
+  }
+
+  .app-question-navigator--visible {
+    transform: none;
+  }
 }
 
 .app-question-navigator__buttons {
@@ -29,7 +45,7 @@
   width: 4rem;
   height: 4rem;
   border: 2px solid var(--theme-color-1);
-  margin: 1rem;
+  margin: 0.5rem;
   user-select: none;
   cursor: pointer;
   transition: all 0.2s;

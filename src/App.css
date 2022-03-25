@@ -17,7 +17,7 @@
 .app-question-panel {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  flex: 4;
   height: 100%;
   justify-content: space-between;
 }
@@ -36,4 +36,45 @@
 
 .app-header::first-letter {
   font-size: 1.3em;
+}
+
+.app-backdrop {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 750px) {
+  .app-backdrop {
+    display: block;
+  }
+}
+
+.drawer-button {
+  position: absolute;
+  z-index: 10;
+  right: 2rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  background-color: transparent;
+  transform: rotateZ(-90deg) !important;
+  padding: 1rem;
+  border-radius: 100rem;
+  display: none;
+  font-weight: bold;
+}
+
+.drawer-button--visisble {
+  transform: none !important;
+}
+
+@media (max-width: 750px) {
+  .drawer-button {
+    display: block;
+  }
 }

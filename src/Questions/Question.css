@@ -7,6 +7,12 @@
   position: relative;
 }
 
+@media (max-width: 550px) {
+  .app-question {
+    padding: 6rem 4rem;
+  }
+}
+
 .app-question__statement {
   font-weight: bold;
   font-size: 1.2em;
@@ -18,6 +24,12 @@
   gap: 1rem;
   grid-template-columns: auto auto;
   counter-reset: line-number 0;
+}
+
+@media (max-width: 900px) {
+  .app-question__options {
+    grid-template-columns: auto;
+  }
 }
 
 .app-question__option {

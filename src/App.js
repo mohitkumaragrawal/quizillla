@@ -14,6 +14,7 @@ class App extends Component {
     questions: null,
     showAnswerMode: false,
     isLoading: true,
+    drawerVisisble: false,
   };
 
   constructor(props) {
@@ -109,14 +110,32 @@ class App extends Component {
     }
   };
 
+  showDrawer = () => {
+    this.setState({ drawerVisisble: !this.state.drawerVisisble });
+  };
+
   render() {
     if (this.state.isLoading) {
       return <div>loading....</div>;
     }
     return (
       <div className="app-container">
+        {this.state.drawerVisisble ? (
+          <div className="app-backdrop" onClick={this.showDrawer}></div>
+        ) : null}
+
+        <button
+          className={`app-action-button drawer-button ${
+            this.state.drawerVisisble ? "drawer-button--visisble" : ""
+          }`}
+          onClick={this.showDrawer}
+        >
+          |||
+        </button>
+
         <div className="app-question-panel">
           <h1 className="app-header">QUIZILLLLLA!</h1>
+
           <div className="app-question-container">
             <Question
               question={this.state.questions[this.state.questionIndex]}
@@ -154,6 +173,7 @@ class App extends Component {
           questionIndex={this.state.questionIndex}
           questions={this.state.questions}
           showAnswerMode={this.state.showAnswerMode}
+          drawerVisisble={this.state.drawerVisisble}
           onChangeQuestion={this.changeQuestion}
           onSubmit={this.onSubmit}
         />

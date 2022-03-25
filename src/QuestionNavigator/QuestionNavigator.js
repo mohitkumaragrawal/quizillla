@@ -10,6 +10,7 @@ const questionNavigator = (props) => {
     onChangeQuestion,
     showAnswerMode,
     questions,
+    drawerVisisble,
   } = props;
   const questionButtons = [];
 
@@ -82,8 +83,13 @@ const questionNavigator = (props) => {
 
     return `Score: ${scored}/${total}`;
   };
+
+  let navigatorClass = "app-question-navigator";
+  if (drawerVisisble) {
+    navigatorClass += " app-question-navigator--visible";
+  }
   return (
-    <div className="app-question-navigator">
+    <div className={navigatorClass}>
       <div className="app-question-navigator__buttons">{questionButtons}</div>
       {showAnswerMode ? (
         <div className="app-question-navigator__score">{calculateScore()}</div>

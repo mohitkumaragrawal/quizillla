@@ -8,6 +8,7 @@
 
 html {
   font-size: 62.5%;
+  overflow: hidden;
 }
 
 html {
@@ -32,6 +33,7 @@ body {
   font-family: "Hubballi";
   overflow: hidden;
   background-color: var(--theme-color-1);
+  position: relative;
 
   color: var(--text-color);
 }
